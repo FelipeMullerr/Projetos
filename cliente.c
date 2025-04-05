@@ -21,7 +21,7 @@ int main() {
 
         int pipe_fd = open(PIPE_NOME, O_WRONLY); // se pipe_fd (file descriptor) é igual a -1, erro ao abrir o pipe
         if (pipe_fd == -1) {                     // descricao do arquivo pipe (para o programa encontrar o arquivo e conseguir abrir)
-            perror("Erro ao abrir pipe");
+            printf("Erro ao abrir o pipe nomeado");
             continue;
         }
         // Insere o comando no Pipe nomeado para fazer a comunicao com o servidor
