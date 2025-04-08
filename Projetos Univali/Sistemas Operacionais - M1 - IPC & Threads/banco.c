@@ -39,6 +39,17 @@ int deletar_registro(int id) {
     return 0;
 }
 
+int update_registro(int id, const char* nome) {
+    for (int i = 0; i < MAX_REGISTROS; i++) {
+        if (registros[i].id == id) {
+            strncpy(registros[i].nome, nome, TAM_NOME);
+            printf("Usuario de ID %d atualizado para %s",id,nome);
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int selecionar_registro(int id) {
     for(int i = 0; i < MAX_REGISTROS;i++) {
         if(registros[i].id == id) {

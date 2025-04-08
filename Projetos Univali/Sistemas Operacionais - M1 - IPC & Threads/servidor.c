@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include "banco.h"
+#include <time.h>
 
 #define MAX_REQUISICOES 5
 #define NUM_THREADS 4
@@ -48,12 +49,34 @@ char* remover_da_fila() {
 }
 // Termino da criacao da Fila
 
+void inserir_log(const char* comando) {
+    time_t horaAtual = time(NULL);
+    char* hora = ctime(&horaAtual);
+
+    size_t len = strlen(hora);
+    if (len > 0 && hora[len-1] == '\n') {
+        hora[len-1] = '\0';
+    }
+
+    FILE* arquivo = fopen("log.txt","a");
+    if(arquivo != NULL) {
+        fprintf(arquivo,"[%s] - Comando: %s\n",hora,comando);
+        fclose(arquivo);
+    } else {
+        printf("Arquivo log nao aberto\n");
+    }
+}
+
 
 void* processar_requisicao(void* arg) {
     int id_thread = *(int*)arg;
 
     while (1) {
         char* comando = remover_da_fila();
+
+        time_t horaAtual = time(NULL);
+        char* hora = ctime(&horaAtual);
+
         int id;
         char nome[TAM_NOME];
 
@@ -64,6 +87,7 @@ void* processar_requisicao(void* arg) {
         if (sscanf(comando, "INSERT id=%d nome='%49[^']'", &id, nome) == 2) {
             int resultado = inserir_registro(id,nome);
             if (resultado == 1) {
+                inserir_log(comando);
                 printf("[Thread %d] Registro inserido com sucesso.\n", id_thread);
             } else if(resultado == -1) {
                 printf("[Thread %d] Erro ao inserir (ID ja existente).\n", id_thread);
@@ -72,12 +96,19 @@ void* processar_requisicao(void* arg) {
             }
         } else if (sscanf(comando, "DELETE id=%d", &id) == 1) {
             if (deletar_registro(id)) {
+                inserir_log(comando);
                 printf("[Thread %d] Registro removido com sucesso.\n", id_thread);
             } else {
                 printf("[Thread %d] Registro nao encontrado.\n", id_thread);
             }
         } else if (sscanf(comando,"SELECT id=%d", &id) == 1) {
+            inserir_log(comando);
             selecionar_registro(id);
+        } else if (sscanf(comando, "UPDATE id=%d novoNome='%49[^']'", &id, nome) == 2) {
+            inserir_log(comando);
+            if(update_registro(id,nome)) {
+                
+            }
         } else {
             printf("[Thread %d] Comando invalido: %s\n", id_thread, comando);
         }
@@ -130,6 +161,7 @@ int main() {
             //printf("Comando recebido: %s\n", buffer);
 
             if (strcmp(buffer, "sair") == 0) {
+                inserir_log("--- Secçao Finalizada ---\n");
                 printf("Saindo e terminando a execução do servidor\n");
                 break;
             }
