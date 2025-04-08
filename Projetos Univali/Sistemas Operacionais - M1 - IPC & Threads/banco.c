@@ -13,6 +13,12 @@ void inicializar_banco() {
 
 int inserir_registro(int id, const char* nome) {
     for (int i = 0; i < MAX_REGISTROS; i++) {
+        if (registros[i].id == id) {
+            return -1;
+        }
+    }
+
+    for (int i = 0; i < MAX_REGISTROS; i++) {
         if (registros[i].id == -1) {
             registros[i].id = id;
             strncpy(registros[i].nome, nome, TAM_NOME);
