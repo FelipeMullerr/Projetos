@@ -107,7 +107,7 @@ void* processar_requisicao(void* arg) {
         } else if (sscanf(comando, "UPDATE id=%d novoNome='%49[^']'", &id, nome) == 2) {
             inserir_log(comando);
             if(update_registro(id,nome)) {
-                printf("[Thread %d] - Usuario de ID %d atualizado para %s.\n", id_thread);
+                printf("[Thread %d] - Usuario de ID %d atualizado para %s.\n",id_thread,id,nome);
             }
         } else {
             printf("[Thread %d] Comando invalido: %s\n", id_thread, comando);
