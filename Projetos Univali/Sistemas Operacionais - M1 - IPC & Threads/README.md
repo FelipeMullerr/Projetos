@@ -57,10 +57,18 @@ A comunicação entre cliente e servidor ocorre via **pipe nomeado**. O servidor
 ## 🚀 Como Executar
 
 1. Clone ou baixe o projeto para seu computador.
-2. Abra um terminal e vá até a pasta do projeto:
-   
-    >-- cd /caminho/para/o/projetpo
-    >-- Compile utilizando o comando ***make all***
-    >-- Logo em seguida abra dois terminais, um para cada processo que sera executado, navegue usando **cd** até o caminho do arquivo e após isso com o código ja compilado, execute:
-    > -- 1. No primeiro terminal o comando ./servidor (executa o servidor)
-    > -- 2. No segundo terminal o comando ./cliente (executando o cliente)
+
+2. Acesse a pasta onde o projeto está localizado usando o comando `cd`.
+
+3. Compile o projeto utilizando o comando `make all`.
+
+4. Em seguida, abra **dois terminais**: um será usado para executar o servidor e o outro para o cliente.
+
+5. Em cada terminal, navegue até a pasta do projeto com o comando `cd`, caso ainda não esteja nela.
+
+6. No **primeiro terminal**, execute o servidor digitando `./servidor`.
+
+7. No **segundo terminal**, execute o cliente digitando `./cliente`.
+
+8. Agora, com ambos em execução, digite os comandos no terminal do cliente para interagir com o servidor. Você pode utilizar os comandos `INSERT`, `DELETE`, `SELECT`, `UPDATE` ou `sair` para encerrar o sistema.
+
