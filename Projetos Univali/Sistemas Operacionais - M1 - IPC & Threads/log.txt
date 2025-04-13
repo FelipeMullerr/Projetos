@@ -29,3 +29,17 @@
 [Sun Apr 13 11:29:42 2025] - Comando: UPDATE id=1 novoNome='Lucasl'
 [Sun Apr 13 11:30:02 2025] - Comando: --- Secçao Finalizada ---
 
+[Sun Apr 13 15:37:02 2025] - Comando: INSERT id=1 nome='felipe'
+[Sun Apr 13 15:37:08 2025] - Comando: INSERT id=2 nome='lucas'
+[Sun Apr 13 15:37:11 2025] - Comando: SELECT id=1
+[Sun Apr 13 15:37:13 2025] - Comando: SELECT id=2
+[Sun Apr 13 15:37:27 2025] - Comando: INSERT id=3 nome='kaua'
+[Sun Apr 13 15:37:31 2025] - Comando: SELECT id=2
+[Sun Apr 13 15:39:39 2025] - Comando: --- Secçao Finalizada ---
+
+[Sun Apr 13 15:39:51 2025] - Comando: INSERT id=1 nome='felipe'
+[Sun Apr 13 15:39:56 2025] - Comando: INSERT id=2 nome='e'
+[Sun Apr 13 15:40:02 2025] - Comando: SELECT id=1
+[Sun Apr 13 15:40:04 2025] - Comando: SELECT id=2
+[Sun Apr 13 15:40:06 2025] - Comando: --- Secçao Finalizada ---
+

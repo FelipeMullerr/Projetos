@@ -54,11 +54,9 @@ int selecionar_registro(int id) {
         if(registros[i].id == id) {
             printf("Usuário de ID %d encontrado com nome: %s\n",id,registros[i].nome);
             return 1;
-        } else {
-            printf("Usuário nao encontrado no banco de dados\n");
-            return 0;
         }
     }
+    printf("Usuário nao encontrado no banco de dados\n");
     return 0;
 }
 
