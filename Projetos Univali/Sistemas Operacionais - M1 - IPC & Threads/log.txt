@@ -12,3 +12,20 @@
 [Tue Apr  8 20:23:13 2025] - Comando: INSERT id=1 nome='Fe'
 [Tue Apr  8 20:24:12 2025] - Comando: --- Secçao Finalizada ---
 
+[Sun Apr 13 11:17:55 2025] - Comando: INSERT id=1 nome='felipe'
+[Sun Apr 13 11:18:03 2025] - Comando: INSERT id=2 nome='lucas'
+[Sun Apr 13 11:18:15 2025] - Comando: --- Secçao Finalizada ---
+
+[Sun Apr 13 11:24:19 2025] - Comando: INSERT id=1 nome='felipe'
+[Sun Apr 13 11:25:15 2025] - Comando: SELECT id=1
+[Sun Apr 13 11:25:26 2025] - Comando: DELETE id=1
+[Sun Apr 13 11:25:34 2025] - Comando: INSERT id=1 nome='felipe'
+[Sun Apr 13 11:26:26 2025] - Comando: --- Secçao Finalizada ---
+
+[Sun Apr 13 11:26:54 2025] - Comando: INSERT id=1 nome='lucasl'
+[Sun Apr 13 11:29:18 2025] - Comando: --- Secçao Finalizada ---
+
+[Sun Apr 13 11:29:33 2025] - Comando: INSERT id=1 nome='felipe'
+[Sun Apr 13 11:29:42 2025] - Comando: UPDATE id=1 novoNome='Lucasl'
+[Sun Apr 13 11:30:02 2025] - Comando: --- Secçao Finalizada ---
+

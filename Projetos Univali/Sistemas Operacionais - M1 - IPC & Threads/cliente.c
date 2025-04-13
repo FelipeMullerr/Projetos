@@ -9,10 +9,11 @@ int main() {
     char comando[256];
 
     while (1) {
-        printf("Digite um comando (INSERT, DELETE, SELECT ou sair):\n");
+        printf("Digite um comando (INSERT, DELETE, SELECT, UPDATE ou sair):\n");
         printf("\bInsert: INSERT id=numero nome='nome' \n");
         printf("\bDelete: DELETE id=numero\n");
-        printf("\bSelect: SELECT id=numero\n>");
+        printf("\bSelect: SELECT id=numero\n");
+        printf("\bUpdate: UPDATE id=numero novoNome='nome' \n>");
         if (fgets(comando, sizeof(comando), stdin) == NULL) {
             break;
         }

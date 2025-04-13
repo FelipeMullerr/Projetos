@@ -18,5 +18,6 @@ int deletar_registro(int id);
 int selecionar_registro(int id);
 void imprimir_banco();
 int update_registro(int id, const char* nome);
+void salvar_banco();
 
 #endif

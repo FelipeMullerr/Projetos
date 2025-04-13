@@ -62,6 +62,24 @@ int selecionar_registro(int id) {
     return 0;
 }
 
+
+void salvar_banco() {
+    FILE *arquivo = fopen("banco_dados.txt", "w");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo para salvar o banco.\n");
+        return;
+    }
+
+    for (int i = 0; i < MAX_REGISTROS; i++) {
+        if (registros[i].id != -1) {
+            fprintf(arquivo, "id=%d nome='%s'\n", registros[i].id, registros[i].nome);
+        }
+    }
+
+    fclose(arquivo);
+    printf("Banco salvo com sucesso em 'banco_dados.txt'.\n");
+}
+
 void imprimir_banco() {
     printf("Estado atual do banco:\n");
     for (int i = 0; i < MAX_REGISTROS; i++) {

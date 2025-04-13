@@ -94,22 +94,28 @@ void* processar_requisicao(void* arg) {
             } else {
                 printf("[Thread %d] Erro ao inserir (Banco Cheio)\n",id_thread);
             }
-        } else if (sscanf(comando, "DELETE id=%d", &id) == 1) {
+        } 
+        else if (sscanf(comando, "DELETE id=%d", &id) == 1) {
             if (deletar_registro(id)) {
                 inserir_log(comando);
                 printf("[Thread %d] Registro removido com sucesso.\n", id_thread);
             } else {
                 printf("[Thread %d] Registro nao encontrado.\n", id_thread);
             }
-        } else if (sscanf(comando,"SELECT id=%d", &id) == 1) {
+        } 
+        else if (sscanf(comando,"SELECT id=%d", &id) == 1) {
             inserir_log(comando);
             selecionar_registro(id);
-        } else if (sscanf(comando, "UPDATE id=%d novoNome='%49[^']'", &id, nome) == 2) {
-            inserir_log(comando);
+        } 
+        else if (sscanf(comando, "UPDATE id=%d novoNome='%49[^']'", &id, nome) == 2) {
             if(update_registro(id,nome)) {
+                inserir_log(comando);
                 printf("[Thread %d] - Usuario de ID %d atualizado para %s.\n",id_thread,id,nome);
+            } else {
+                printf("[Thread %d] - Não foi possível encontrar um usuário com o ID %d. \n",id_thread,id);
             }
-        } else {
+        } 
+        else {
             printf("[Thread %d] Comando invalido: %s\n", id_thread, comando);
         }
 
@@ -162,6 +168,7 @@ int main() {
 
             if (strcmp(buffer, "sair") == 0) {
                 inserir_log("--- Secçao Finalizada ---\n");
+                salvar_banco();
                 printf("Saindo e terminando a execução do servidor\n");
                 break;
             }
